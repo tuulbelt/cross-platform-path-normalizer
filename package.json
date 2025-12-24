@@ -1,0 +1,33 @@
+{
+  "name": "@tuulbelt/cross-platform-path-normalizer",
+  "version": "0.1.0",
+  "description": "Convert Windows/Unix paths to consistent format with zero dependencies",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --import tsx --test test/index.test.ts",
+    "test:watch": "node --import tsx --test --watch test/index.test.ts"
+  },
+  "keywords": [
+    "tuulbelt",
+    "path",
+    "cross-platform",
+    "windows",
+    "unix",
+    "normalize"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuulbelt/cross-platform-path-normalizer.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+}
