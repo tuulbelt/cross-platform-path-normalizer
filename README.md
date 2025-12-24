@@ -285,7 +285,7 @@ The test suite includes:
 - **33 integration tests** — CLI behavior and file I/O
 - **16 performance tests** — Speed benchmarks (< 1ms per path)
 - **21 stress tests** — Large inputs (1000+ character paths)
-- **24 fuzzy tests** — Property-based testing with random inputs
+- **Fuzzy tests** — Property-based testing with random inputs
 
 ### Dogfooding: Test Reliability Validation
 
