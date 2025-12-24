@@ -6,6 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "test": "node --import tsx --test test/index.test.ts",
     "test:watch": "node --import tsx --test --watch test/index.test.ts"
   },
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vitepress": "^1.6.4"
   }
 }

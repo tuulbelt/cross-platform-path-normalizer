@@ -1,0 +1,45 @@
+/* Icon dark mode styling - force white in dark mode */
+.dark .vp-feature-icon svg,
+.dark .VPFeature .icon svg {
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* Ensure icons remain visible in light mode */
+.vp-feature-icon svg,
+.VPFeature .icon svg {
+  stroke: currentColor;
+}
+
+/* Navbar layout: Title left, everything else right */
+.VPNavBar .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.VPNavBar .title {
+  flex: 0 0 auto;
+}
+
+.VPNavBar .content {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.VPNavBar .content-body {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.VPNavBar nav {
+  margin: 0 !important;
+}
+
+.VPNavBar .VPLocalSearchBox {
+  margin: 0 !important;
+}
