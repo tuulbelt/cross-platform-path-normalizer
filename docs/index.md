@@ -145,6 +145,30 @@ normalizeToWindows('/c/Users/Documents');     // 'C:\Users\Documents'
 [Complete API documentation →](/api/reference)
 :::
 
+## Dogfooding: Test Reliability Validation
+
+We use **[Test Flakiness Detector](../../test-flakiness-detector/)** (another Tuulbelt tool) to validate that all 145 tests are deterministic and reliable:
+
+```bash
+npm run test:dogfood
+```
+
+This runs the entire test suite 10 times (1,450 total test executions) to detect any non-deterministic behavior:
+
+```
+🔬 Dogfooding: Using Test Flakiness Detector to validate Cross-Platform Path Normalizer tests
+
+✅ NO FLAKINESS DETECTED
+All 10 test runs passed consistently.
+
+Completion time: ~6.6 minutes for 145 tests × 10 runs = 1,450 executions
+```
+
+This demonstrates:
+- **Tool Composition** — Tuulbelt tools validate each other in real-world use
+- **Test Quality** — Zero flaky tests detected across 1,450 executions
+- **Production Ready** — All tests are deterministic and reliable
+
 ## Part of Tuulbelt
 
 This tool is part of [Tuulbelt](https://github.com/tuulbelt/tuulbelt) - a collection of focused, zero-dependency tools for modern software development.
