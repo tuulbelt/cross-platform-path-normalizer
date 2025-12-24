@@ -335,18 +335,14 @@ Potential improvements for future versions:
 - Path comparison (case-insensitive on Windows)
 - Relative path calculation between two paths
 
+
 ## Demo
 
 ![Demo](docs/demo.gif)
 
-**[▶ View interactive recording on asciinema.org](#)**
+**[▶ View interactive recording on asciinema.org](https://asciinema.org/a/doMBEP7u5kenm7wZe77BKoy4B)**
 
-<div>
-  <span style="display: inline-block; vertical-align: middle; margin-right: 8px;"><strong>Try it online:</strong></span>
-  <a href="https://stackblitz.com/github/tuulbelt/tuulbelt/tree/main/cross-platform-path-normalizer" style="display: inline-block; vertical-align: middle;">
-    <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz" style="vertical-align: middle;">
-  </a>
-</div>
+> Try it online: [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/tuulbelt/tuulbelt/tree/main/cross-platform-path-normalizer)
 
 ## License
 
