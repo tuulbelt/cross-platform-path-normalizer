@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)
 ![Zero Dependencies](https://img.shields.io/badge/dependencies-0-success)
-![Tests](https://img.shields.io/badge/tests-121%2B%20passing-success)
+![Tests](https://img.shields.io/badge/tests-145%2B%20passing-success)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Convert Windows/Unix paths to consistent format with zero dependencies.
