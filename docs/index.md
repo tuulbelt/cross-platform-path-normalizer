@@ -169,6 +169,21 @@ This demonstrates:
 - **Test Quality** — Zero flaky tests detected across 1,290 executions
 - **Production Ready** — All tests are deterministic and reliable
 
+## Demo
+
+See the tool in action with real-time path conversion examples.
+
+<div style="margin: 20px 0;">
+  <span style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+    <strong>Try it online:</strong>
+  </span>
+  <a href="https://stackblitz.com/github/tuulbelt/tuulbelt/tree/main/cross-platform-path-normalizer" style="display: inline-block; vertical-align: middle;">
+    <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz" style="vertical-align: middle;">
+  </a>
+</div>
+
+Run the tool directly in your browser with zero setup. Try converting Windows and Unix paths, test edge cases, and explore the full API.
+
 ## Part of Tuulbelt
 
 This tool is part of [Tuulbelt](https://github.com/tuulbelt/tuulbelt) - a collection of focused, zero-dependency tools for modern software development.
