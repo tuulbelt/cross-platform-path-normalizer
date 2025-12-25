@@ -271,10 +271,9 @@ type Result =
 ## Testing
 
 ```bash
-npm test                # Run all tests (145 tests)
+npm test                # Run all tests (128 tests)
 npm run test:unit       # Unit tests only
 npm run test:integration # Integration tests
-npm run test:performance # Performance benchmarks
 npm run test:stress     # Stress tests (large inputs)
 npm run test:fuzzy      # Property-based fuzzy tests
 npm run test:dogfood    # Validate test suite reliability
@@ -283,13 +282,12 @@ npm run test:dogfood    # Validate test suite reliability
 The test suite includes:
 - **51 unit tests** — Core path normalization logic
 - **33 integration tests** — CLI behavior and file I/O
-- **16 performance tests** — Speed benchmarks (< 1ms per path)
 - **21 stress tests** — Large inputs (1000+ character paths)
 - **Fuzzy tests** — Property-based testing with random inputs
 
 ### Dogfooding: Test Reliability Validation
 
-We use **Test Flakiness Detector** (another Tuulbelt tool) to validate that all 145 tests are deterministic:
+We use **Test Flakiness Detector** (another Tuulbelt tool) to validate that all 128 tests are deterministic:
 
 ```bash
 npm run test:dogfood
@@ -304,7 +302,7 @@ All 10 test runs passed consistently.
 The test suite is deterministic and reliable! 🎉
 
 💡 This validates that:
-   - All 145 tests are deterministic
+   - All 128 tests are deterministic
    - No race conditions in async code
    - No probabilistic test logic
    - No shared state between tests
