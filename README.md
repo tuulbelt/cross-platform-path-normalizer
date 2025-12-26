@@ -285,33 +285,39 @@ The test suite includes:
 - **21 stress tests** — Large inputs (1000+ character paths)
 - **Fuzzy tests** — Property-based testing with random inputs
 
-### Dogfooding: Test Reliability Validation
+### Dogfooding: Tool Composition
 
-We use **Test Flakiness Detector** (another Tuulbelt tool) to validate that all 128 tests are deterministic:
+This tool demonstrates composability by being VALIDATED BY other Tuulbelt tools:
 
+**Test Flakiness Detector** - Validate test reliability:
 ```bash
-npm run test:dogfood
+./scripts/dogfood-flaky.sh 10
+# OR: npm run test:dogfood
+# ✅ NO FLAKINESS DETECTED
+# 145 tests × 10 runs = 1,450 executions
 ```
 
-This runs the entire test suite 10 times to detect any non-deterministic behavior:
+This proves:
+- All 145 tests are deterministic
+- No race conditions in async code
+- No probabilistic test logic
+- No shared state between tests
 
-```
-✅ NO FLAKINESS DETECTED
-
-All 10 test runs passed consistently.
-The test suite is deterministic and reliable! 🎉
-
-💡 This validates that:
-   - All 128 tests are deterministic
-   - No race conditions in async code
-   - No probabilistic test logic
-   - No shared state between tests
-   - File cleanup is thorough
+**Output Diffing Utility** - Prove identical outputs:
+```bash
+./scripts/dogfood-diff.sh
+# Compares test outputs between runs
+# Should be IDENTICAL (no random data)
 ```
 
-**Completion time:** ~6.6 minutes for 10 × 145 = 1,450 test executions
+**Used By Other Tools:**
+- Output Diffing Utility (path input handling)
+- File-Based Semaphore (lock file paths)
+- Test Flakiness Detector (test command paths)
 
 This demonstrates how Tuulbelt tools validate each other — the test-flakiness-detector ensures our test suite is reliable and production-ready.
+
+See `DOGFOODING_STRATEGY.md` for implementation details.
 
 ## Edge Cases Handled
 
