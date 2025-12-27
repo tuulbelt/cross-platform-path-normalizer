@@ -37,7 +37,16 @@ Clone the repository:
 git clone https://github.com/tuulbelt/cross-platform-path-normalizer.git
 cd cross-platform-path-normalizer
 npm install  # Install dev dependencies only
-npm link     # Enable the 'normpath' command globally
+```
+
+**CLI names** - both short and long forms work:
+- Short (recommended): `normpath`
+- Long: `cross-platform-path-normalizer`
+
+**Recommended setup** - install globally for easy access:
+```bash
+npm link  # Enable the 'normpath' command globally
+normpath --help
 ```
 
 No runtime dependencies — this tool uses only Node.js standard library.
