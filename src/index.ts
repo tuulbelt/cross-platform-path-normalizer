@@ -1,3 +1,4 @@
+#!/usr/bin/env -S npx tsx
 /**
  * Cross-Platform Path Normalizer
  *
