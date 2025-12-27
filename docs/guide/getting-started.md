@@ -8,6 +8,7 @@ Get up and running with Cross-Platform Path Normalizer in 5 minutes.
 git clone https://github.com/tuulbelt/cross-platform-path-normalizer.git
 cd cross-platform-path-normalizer
 npm install
+npm link     # Enable the 'normpath' command globally
 ```
 
 ## Quick Start (CLI)
