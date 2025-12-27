@@ -278,6 +278,23 @@ type Result =
 
 **No external dependencies** — Uses only Node.js `path` module for helper functions.
 
+## Security
+
+- **String transformation only**: This tool transforms path strings but does not access the filesystem
+- **Path validation required**: Always validate normalized paths before file operations (e.g., check they're within expected directories)
+- **No path traversal prevention**: Use additional security checks if processing untrusted paths
+
+```typescript
+import { normalizePath } from '@tuulbelt/cross-platform-path-normalizer';
+
+const normalized = normalizePath(userInput, 'unix');
+
+// Always validate before file operations
+if (!normalized.startsWith('/allowed/directory/')) {
+  throw new Error('Path outside allowed directory');
+}
+```
+
 ## Testing
 
 ```bash
