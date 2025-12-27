@@ -339,3 +339,129 @@ describe('integration tests', () => {
     assert.strictEqual(windowsResult, 'C:\\Users\\Documents\\file.txt');
   });
 });
+
+// ============================================================================
+// Security Tests - Input Handling
+// ============================================================================
+
+describe('security - malicious input handling', () => {
+  test('handles null bytes in path without crashing', () => {
+    // Null bytes could be used for path truncation attacks
+    const pathWithNull = 'C:\\Users\\file\x00.txt';
+
+    // Should not throw - graceful handling
+    assert.doesNotThrow(() => normalizeToUnix(pathWithNull));
+    assert.doesNotThrow(() => normalizeToWindows(pathWithNull));
+  });
+
+  test('handles control characters in path', () => {
+    // Control characters could cause issues in some systems
+    const pathWithControl = 'C:\\Users\\file\x1b[31m.txt';
+
+    assert.doesNotThrow(() => normalizeToUnix(pathWithControl));
+    assert.doesNotThrow(() => normalizeToWindows(pathWithControl));
+  });
+
+  test('handles extremely long paths', () => {
+    // Very long paths (10,000+ characters) should not cause stack overflow
+    const longPath = 'C:\\' + 'a'.repeat(10000) + '\\file.txt';
+
+    assert.doesNotThrow(() => normalizeToUnix(longPath));
+    assert.doesNotThrow(() => normalizeToWindows(longPath));
+
+    // Result should be properly formed
+    const result = normalizeToUnix(longPath);
+    assert(result.startsWith('/c/'));
+    assert(result.endsWith('/file.txt'));
+  });
+
+  test('handles path traversal sequences (does not sanitize - by design)', () => {
+    // Path normalizer transforms paths, does NOT sanitize them
+    // This is documented behavior - sanitization is caller responsibility
+    const traversalPath = 'C:\\Users\\..\\..\\Windows\\System32';
+    const unixResult = normalizeToUnix(traversalPath);
+
+    // Traversal sequences are preserved (as expected)
+    assert(unixResult.includes('..'));
+    assert.strictEqual(unixResult, '/c/Users/../../Windows/System32');
+  });
+
+  test('handles UNC path injection attempts', () => {
+    // UNC paths (\\\\server\\share) should be handled consistently
+    const uncPath = '\\\\malicious-server\\share\\file.txt';
+    const result = normalizeToUnix(uncPath);
+
+    // Should convert to Unix UNC format
+    assert.strictEqual(result, '//malicious-server/share/file.txt');
+  });
+
+  test('handles paths with URL-like patterns', () => {
+    // Paths that look like URLs should be treated as paths
+    const urlLikePath = 'C:\\http:\\\\example.com\\file.txt';
+
+    assert.doesNotThrow(() => normalizeToUnix(urlLikePath));
+    const result = normalizeToUnix(urlLikePath);
+    assert(result.includes('http:'));
+  });
+
+  test('handles empty path components gracefully', () => {
+    // Multiple consecutive slashes create empty components
+    const pathWithEmpty = 'C:\\\\\\Users\\\\\\\\file.txt';
+    const result = normalizeToUnix(pathWithEmpty);
+
+    // Redundant slashes should be normalized
+    assert(!result.includes('//') || result.startsWith('//'));
+  });
+
+  test('handles unicode paths consistently', () => {
+    // Unicode in paths is valid on modern systems
+    const unicodePath = 'C:\\Users\\用户\\файл.txt';
+
+    assert.doesNotThrow(() => normalizeToUnix(unicodePath));
+    const result = normalizeToUnix(unicodePath);
+
+    // Unicode should be preserved
+    assert(result.includes('用户'));
+    assert(result.includes('файл.txt'));
+  });
+});
+
+describe('security - input validation', () => {
+  test('normalizePath rejects non-string input', () => {
+    // @ts-expect-error Testing invalid input
+    const result = normalizePath(123);
+
+    assert.strictEqual(result.success, false);
+    assert.strictEqual(result.error, 'Path must be a string');
+  });
+
+  test('normalizePath rejects null input', () => {
+    // @ts-expect-error Testing invalid input
+    const result = normalizePath(null);
+
+    assert.strictEqual(result.success, false);
+    assert.strictEqual(result.error, 'Path must be a string');
+  });
+
+  test('normalizePath rejects undefined input', () => {
+    // @ts-expect-error Testing invalid input
+    const result = normalizePath(undefined);
+
+    assert.strictEqual(result.success, false);
+    assert.strictEqual(result.error, 'Path must be a string');
+  });
+
+  test('normalizePath rejects empty string', () => {
+    const result = normalizePath('');
+
+    assert.strictEqual(result.success, false);
+    assert.strictEqual(result.error, 'Path cannot be empty');
+  });
+
+  test('normalizePath rejects whitespace-only string', () => {
+    const result = normalizePath('   \t\n  ');
+
+    assert.strictEqual(result.success, false);
+    assert.strictEqual(result.error, 'Path cannot be empty');
+  });
+});
