@@ -26,7 +26,7 @@ echo "🎯 Running validation..."
 echo ""
 
 cd "$DETECTOR_DIR"
-npx tsx src/index.ts \
+npx normpath \
   --test "cd '$TOOL_DIR' && npm test 2>&1" \
   --runs "$RUNS"
 

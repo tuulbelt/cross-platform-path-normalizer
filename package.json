@@ -4,6 +4,10 @@
   "description": "Convert Windows/Unix paths to consistent format with zero dependencies",
   "main": "src/index.ts",
   "type": "module",
+  "bin": {
+    "normpath": "./src/index.ts",
+    "cross-platform-path-normalizer": "./src/index.ts"
+  },
   "scripts": {
     "build": "tsc",
     "docs:dev": "vitepress dev docs",

@@ -40,7 +40,7 @@ npm run build
 You can use the tool directly from the cloned repository:
 
 ```bash
-npx tsx src/index.ts --help
+normpath --help
 ```
 
 ## Next Steps

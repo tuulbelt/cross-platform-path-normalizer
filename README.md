@@ -1,4 +1,4 @@
-# Cross-Platform Path Normalizer
+# Cross-Platform Path Normalizer / `normpath`
 
 [![Tests](https://github.com/tuulbelt/tuulbelt/actions/workflows/test-all-tools.yml/badge.svg)](https://github.com/tuulbelt/tuulbelt/actions/workflows/test-all-tools.yml)
 [![Tool Tests](https://github.com/tuulbelt/tuulbelt/workflows/Test%20All%20Tools/badge.svg?branch=main)](https://github.com/tuulbelt/tuulbelt/actions)
@@ -74,21 +74,21 @@ detectPathFormat('/home/user/file.txt');  // 'unix'
 
 ```bash
 # Auto-detect and normalize
-npx tsx src/index.ts "C:\\Users\\file.txt"
+normpath "C:\\Users\\file.txt"
 
 # Force Unix format
-npx tsx src/index.ts --format unix "C:\\Users\\file.txt"
+normpath --format unix "C:\\Users\\file.txt"
 # Output: { "success": true, "path": "/c/Users/file.txt", "format": "unix" }
 
 # Force Windows format
-npx tsx src/index.ts --format windows "/home/user/file.txt"
+normpath --format windows "/home/user/file.txt"
 # Output: { "success": true, "path": "home\\user\\file.txt", "format": "windows" }
 
 # Resolve to absolute path
-npx tsx src/index.ts --absolute "./relative/path.txt"
+normpath --absolute "./relative/path.txt"
 
 # Enable verbose output
-npx tsx src/index.ts --verbose "C:\\Users\\file.txt"
+normpath --verbose "C:\\Users\\file.txt"
 ```
 
 ### In Shell Scripts
@@ -98,13 +98,13 @@ npx tsx src/index.ts --verbose "C:\\Users\\file.txt"
 
 # Convert Windows paths to Unix for processing
 WIN_PATH="C:\\Users\\Documents\\data.csv"
-UNIX_PATH=$(npx tsx src/index.ts --format unix "$WIN_PATH" | jq -r '.path')
+UNIX_PATH=$(normpath --format unix "$WIN_PATH" | jq -r '.path')
 
 echo "Processing $UNIX_PATH"
 process_file "$UNIX_PATH"
 
 # Convert back to Windows for output
-RESULT=$(npx tsx src/index.ts --format windows "$UNIX_PATH")
+RESULT=$(normpath --format windows "$UNIX_PATH")
 echo "$RESULT"
 ```
 

@@ -15,7 +15,7 @@ npm install
 Convert a Windows path to Unix format:
 
 ```bash
-npx tsx src/index.ts --format unix "C:\\Users\\file.txt"
+normpath --format unix "C:\\Users\\file.txt"
 ```
 
 Output:

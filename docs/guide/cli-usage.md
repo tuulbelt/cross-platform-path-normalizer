@@ -3,7 +3,7 @@
 ## Basic Syntax
 
 ```bash
-npx tsx src/index.ts [options] <path>
+normpath [options] <path>
 ```
 
 ## Options
@@ -14,13 +14,13 @@ Target format: `unix`, `windows`, or `auto` (default).
 
 ```bash
 # Auto-detect (default)
-npx tsx src/index.ts "C:\\Users\\file.txt"
+normpath "C:\\Users\\file.txt"
 
 # Force Unix format
-npx tsx src/index.ts --format unix "C:\\Users\\file.txt"
+normpath --format unix "C:\\Users\\file.txt"
 
 # Force Windows format
-npx tsx src/index.ts --format windows "/home/user/file.txt"
+normpath --format windows "/home/user/file.txt"
 ```
 
 ### `--absolute, -a`
@@ -28,7 +28,7 @@ npx tsx src/index.ts --format windows "/home/user/file.txt"
 Resolve to absolute path.
 
 ```bash
-npx tsx src/index.ts --absolute "./relative/path.txt"
+normpath --absolute "./relative/path.txt"
 ```
 
 ### `--verbose, -v`
@@ -36,7 +36,7 @@ npx tsx src/index.ts --absolute "./relative/path.txt"
 Enable verbose output with debug information.
 
 ```bash
-npx tsx src/index.ts --verbose "C:\\Users\\file.txt"
+normpath --verbose "C:\\Users\\file.txt"
 ```
 
 ### `--help, -h`
@@ -44,7 +44,7 @@ npx tsx src/index.ts --verbose "C:\\Users\\file.txt"
 Show help message.
 
 ```bash
-npx tsx src/index.ts --help
+normpath --help
 ```
 
 ## Examples
@@ -52,7 +52,7 @@ npx tsx src/index.ts --help
 ### Convert Windows to Unix
 
 ```bash
-npx tsx src/index.ts --format unix "C:\\Program Files\\MyApp\\config.json"
+normpath --format unix "C:\\Program Files\\MyApp\\config.json"
 ```
 
 Output:
@@ -67,7 +67,7 @@ Output:
 ### Convert Unix to Windows
 
 ```bash
-npx tsx src/index.ts --format windows "/home/user/projects/app"
+normpath --format windows "/home/user/projects/app"
 ```
 
 Output:
@@ -82,7 +82,7 @@ Output:
 ### Handle UNC Paths
 
 ```bash
-npx tsx src/index.ts --format unix "\\\\server\\share\\folder"
+normpath --format unix "\\\\server\\share\\folder"
 ```
 
 Output:
@@ -105,14 +105,14 @@ Output:
 
 ```bash
 # Convert path and use result
-UNIX_PATH=$(npx tsx src/index.ts --format unix "$WIN_PATH" | jq -r '.path')
+UNIX_PATH=$(normpath --format unix "$WIN_PATH" | jq -r '.path')
 echo "Processing: $UNIX_PATH"
 ```
 
 ### PowerShell
 
 ```powershell
-$result = npx tsx src/index.ts --format windows "/home/user/file.txt" | ConvertFrom-Json
+$result = normpath --format windows "/home/user/file.txt" | ConvertFrom-Json
 Write-Host "Path: $($result.path)"
 ```
 

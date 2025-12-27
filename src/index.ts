@@ -277,16 +277,16 @@ Options:
 
 Examples:
   # Auto-detect and normalize
-  npx tsx src/index.ts "C:\\Users\\file.txt"
+  normpath "C:\\Users\\file.txt"
 
   # Force Unix format
-  npx tsx src/index.ts --format unix "C:\\Users\\file.txt"
+  normpath --format unix "C:\\Users\\file.txt"
 
   # Force Windows format
-  npx tsx src/index.ts --format windows "/home/user/file.txt"
+  normpath --format windows "/home/user/file.txt"
 
   # Resolve to absolute path
-  npx tsx src/index.ts --absolute "./relative/path.txt"`);
+  normpath --absolute "./relative/path.txt"`);
       globalThis.process?.exit(0);
     } else if (!arg.startsWith('-')) {
       path = arg;

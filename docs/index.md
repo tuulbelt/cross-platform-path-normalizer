@@ -79,7 +79,7 @@ const unix = normalizePath('C:\\Users\\file.txt', { format: 'unix' });
 Or use the CLI:
 
 ```bash
-npx tsx src/index.ts --format unix "C:\\Users\\file.txt"
+normpath --format unix "C:\\Users\\file.txt"
 ```
 
 ## Why Cross-Platform Path Normalizer?
