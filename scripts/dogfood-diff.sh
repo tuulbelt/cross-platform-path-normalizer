@@ -12,7 +12,7 @@ TEMP_DIR="/tmp/path-diff-$$"
 echo "🔬 Validating Path Normalizer output determinism"
 echo ""
 
-[ ! -d "$DIFF_DIR" ] || [ ! -f "$DIFF_DIR/target/release/output-diff" ] && echo "⚠️  Output Diffing Utility not available, using standard diff" && USE_STANDARD=1
+[ ! -d "$DIFF_DIR" ] || [ ! -f "$DIFF_DIR/target/release/odiff" ] && echo "⚠️  Output Diffing Utility not available, using standard diff" && USE_STANDARD=1
 
 mkdir -p "$TEMP_DIR"
 cd "$TOOL_DIR"
@@ -26,7 +26,7 @@ if [ "$USE_STANDARD" = "1" ]; then
   diff "$TEMP_DIR/run1.txt" "$TEMP_DIR/run2.txt" && echo "✅ Outputs IDENTICAL!" || echo "⚠️  Differences found"
 else
   cd "$DIFF_DIR"
-  ./target/release/output-diff "$TEMP_DIR/run1.txt" "$TEMP_DIR/run2.txt" && echo "✅ Outputs IDENTICAL!" || echo "⚠️  Differences found"
+  ./target/release/odiff "$TEMP_DIR/run1.txt" "$TEMP_DIR/run2.txt" --type text && echo "✅ Outputs IDENTICAL!" || echo "⚠️  Differences found"
 fi
 
 rm -rf "$TEMP_DIR"
