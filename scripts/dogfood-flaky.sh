@@ -26,7 +26,7 @@ echo "🎯 Running validation..."
 echo ""
 
 cd "$DETECTOR_DIR"
-npx normpath \
+npx flaky \
   --test "cd '$TOOL_DIR' && npm test 2>&1" \
   --runs "$RUNS"
 
