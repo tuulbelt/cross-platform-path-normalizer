@@ -383,11 +383,12 @@ Potential improvements for future versions:
 
 
 
+
 ## Demo
 
 ![Demo](docs/demo.gif)
 
-**[▶ View interactive recording on asciinema.org](https://asciinema.org/a/WzR3SV3mPpHQQ28f6d9Xsu79b)**
+**[▶ View interactive recording on asciinema.org](https://asciinema.org/a/tqAZaN0i638YWx7TKvugI8QoB)**
 
 > Try it online: [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/tuulbelt/tuulbelt/tree/main/cross-platform-path-normalizer)
 
