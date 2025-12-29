@@ -400,11 +400,11 @@ MIT — see [LICENSE](LICENSE)
 
 ## Contributing
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for contribution guidelines.
+See [CONTRIBUTING.md](https://github.com/tuulbelt/tuulbelt/blob/main/CONTRIBUTING.md) for contribution guidelines.
 
 ## Related Tools
 
 Part of the [Tuulbelt](https://github.com/tuulbelt/tuulbelt) collection:
-- [Test Flakiness Detector](../test-flakiness-detector/) — Detect unreliable tests
-- [CLI Progress Reporting](../cli-progress-reporting/) — Concurrent-safe progress updates
+- [Test Flakiness Detector](https://github.com/tuulbelt/test-flakiness-detector) — Detect unreliable tests
+- [CLI Progress Reporting](https://github.com/tuulbelt/cli-progress-reporting) — Concurrent-safe progress updates
 - More tools coming soon...

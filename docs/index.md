@@ -147,7 +147,7 @@ normalizeToWindows('/c/Users/Documents');     // 'C:\Users\Documents'
 
 ## Dogfooding: Test Reliability Validation
 
-We use **[Test Flakiness Detector](../../test-flakiness-detector/)** (another Tuulbelt tool) to validate that all 128 tests are deterministic and reliable:
+We use **[Test Flakiness Detector](https://github.com/tuulbelt/test-flakiness-detector)** (another Tuulbelt tool) to validate that all 128 tests are deterministic and reliable:
 
 ```bash
 npm run test:dogfood
