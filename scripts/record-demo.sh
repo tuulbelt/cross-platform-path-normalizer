@@ -6,52 +6,77 @@ TOOL_NAME="cross-platform-path-normalizer"
 SHORT_NAME="normpath"
 LANGUAGE="typescript"
 
+# GIF parameters
+GIF_COLS=100
+GIF_ROWS=30
+GIF_SPEED=1.0
+GIF_FONT_SIZE=14
+
 demo_commands() {
-  echo "# Cross-Platform Path Normalizer Demo"
+  # ═══════════════════════════════════════════
+  # Cross-Platform Path Normalizer / normpath - Tuulbelt
+  # ═══════════════════════════════════════════
+
+  # Step 1: Installation
+  echo "# Step 1: Install globally"
+  sleep 0.5
+  echo "$ npm link"
   sleep 1
 
+  # Step 2: View help
   echo ""
-  echo "# Normalize a Windows path"
-  sleep 0.5
-  echo "$ normpath \"C:\\Users\\Documents\\file.txt\""
-  sleep 0.5
-  normpath "C:\Users\Documents\file.txt"
-  sleep 1.5
-
-  echo ""
-  echo "# Convert Windows path to Unix format"
-  sleep 0.5
-  echo "$ normpath --format unix \"C:\\Users\\Documents\\file.txt\""
-  sleep 0.5
-  normpath --format unix "C:\Users\Documents\file.txt"
-  sleep 1.5
-
-  echo ""
-  echo "# Convert Unix path to Windows format"
-  sleep 0.5
-  echo "$ normpath --format windows \"/home/user/project/src\""
-  sleep 0.5
-  normpath --format windows "/home/user/project/src"
-  sleep 1.5
-
-  echo ""
-  echo "# Handle UNC network paths"
-  sleep 0.5
-  echo "$ normpath --format unix \"\\\\\\\\server\\\\share\\\\folder\""
-  sleep 0.5
-  normpath --format unix "\\\\server\\share\\folder"
-  sleep 1.5
-
-  echo ""
-  echo "# Show help"
+  echo "# Step 2: View available commands"
   sleep 0.5
   echo "$ normpath --help"
   sleep 0.5
   normpath --help
+  sleep 3
+
+  # Step 3: Auto-detect format
+  echo ""
+  echo "# Step 3: Auto-detect and normalize"
+  sleep 0.5
+  echo "$ normpath \"C:\\Users\\Documents\\file.txt\""
+  normpath "C:\Users\Documents\file.txt"
+  sleep 1
+  echo "$ normpath \"/home/user/documents/file.txt\""
+  normpath "/home/user/documents/file.txt"
+  sleep 2
+
+  # Step 4: Force Unix format
+  echo ""
+  echo "# Step 4: Force Unix format"
+  sleep 0.5
+  echo "$ normpath --format unix \"C:\\Program Files\\App\\config.ini\""
+  normpath --format unix "C:\Program Files\App\config.ini"
+  sleep 2
+
+  # Step 5: Force Windows format
+  echo ""
+  echo "# Step 5: Force Windows format"
+  sleep 0.5
+  echo "$ normpath --format windows \"/usr/local/bin/app\""
+  normpath --format windows "/usr/local/bin/app"
+  sleep 2
+
+  # Step 6: Absolute path resolution
+  echo ""
+  echo "# Step 6: Absolute path resolution"
+  sleep 0.5
+  echo "$ normpath --absolute \"./relative/path.txt\""
+  normpath --absolute "./relative/path.txt"
+  sleep 2
+
+  # Step 7: Edge cases
+  echo ""
+  echo "# Step 7: Edge cases"
+  sleep 0.5
+  echo "$ normpath \"///multiple///slashes///path\""
+  normpath "///multiple///slashes///path"
   sleep 2
 
   echo ""
-  echo "# Done! Normalize paths with the normpath command."
+  echo "# Done! Normalize paths with: normpath <path>"
   sleep 1
 }
 
