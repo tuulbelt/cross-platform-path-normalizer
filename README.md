@@ -1,3 +1,5 @@
+> **Part of [Tuulbelt](https://github.com/tuulbelt/tuulbelt)** — A collection of zero-dependency tools.
+
 # Cross-Platform Path Normalizer / `normpath`
 
 [![Tests](https://github.com/tuulbelt/cross-platform-path-normalizer/actions/workflows/test.yml/badge.svg)](https://github.com/tuulbelt/cross-platform-path-normalizer/actions/workflows/test.yml)
